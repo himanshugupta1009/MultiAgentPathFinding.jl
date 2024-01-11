@@ -23,13 +23,13 @@ The full package should then pre-compile.
 ### Running an Example
 The `scripts/` folder has an example for each of CBS and ECBS on the 2D Grid World domain (a standard benchmark for MAPF algorithms - see the ECBS paper).
 The `main` function in each script has an `infile::String` argument.
-The infiles here refer to the `benchmark` files in the reference C++ repository - see [here](https://github.com/whoenig/libMultiRobotPlanning/tree/master/benchmark).
-**Please Note**, you need to use JSON versions of the YAML files (I had some trouble getting the YAML files to play nicely). I have a simple converter `scripts/yaml_to_json.py` that you can run on the downloaded benchmark folder for that purpose.
+The infiles here refer to the files in the `benchmark` folder.
+**Please Note**, you need to use JSON versions of the YAML files that are present in the folder. 
 
-Once you've done all that, running an example is pretty easy. Assuming you have a `benchmarks/` folder at the top-level `benchmarks/8x8_obst12/map_8x8_*.yaml` file (from the C++ reference), you can do the following (while having the environment activated):
+Once you've done all that, running an example is pretty easy. Assuming you have a `benchmark/` folder at the top-level, you can do the following (while having the environment activated):
 ```shell
 julia> include("scripts/cbs_grid2d_example.jl")
-julia> main("./benchmarks/<your-env-filename>.json", "<some-out-file>.json", "SOC")
+julia> main("./benchmark/<your-env-filename>.json", "<some-out-file>.json", "SOC")
 ```
 where `"SOC"` refers to the sum-of-costs high-level objective (could also be `"MS"` for makespan).
 The call to `main` also outputs the time required for CBS through the `@time` macros. You have to discard the timing from the first call to `main` as it triggers compilation and the [timing is higher than the true one](https://docs.julialang.org/en/v1/manual/performance-tips/index.html#Measure-performance-with-[@time](@ref)-and-pay-attention-to-memory-allocation-1).
