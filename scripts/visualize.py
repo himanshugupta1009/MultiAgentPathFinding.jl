@@ -149,8 +149,8 @@ class Animation:
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
-  parser.add_argument("map", help="input file containing map")
-  parser.add_argument("schedule", help="schedule for agents")
+  parser.add_argument("--map", help="input file containing map")
+  parser.add_argument("--schedule", help="schedule for agents")
   parser.add_argument('--video', dest='video', default=None, help="output video file (or leave empty to show on screen)")
   parser.add_argument("--speed", type=int, default=1, help="speedup-factor")
   args = parser.parse_args()
